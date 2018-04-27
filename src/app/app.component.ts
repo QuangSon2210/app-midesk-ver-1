@@ -15,7 +15,7 @@ import { AuthService } from './services/authentication/auth.service';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = HomePage;
   loggedInUser = {};
 
   pages: Array<{title: string, component: any, icon: string}>;
@@ -41,13 +41,13 @@ export class MyApp {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      if(this._authService.isUserLoggedIn()){
+      /*if(this._authService.isUserLoggedIn()){
         this.loggedInUser = this._authService.getLoggedInUser();
         this.rootPage = HomePage;
       }else{
         this.loggedInUser = {};
         this.rootPage = LoginPage;
-      } 
+      } */
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
