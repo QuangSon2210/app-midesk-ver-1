@@ -1,0 +1,36 @@
+<ion-menu [content]="content">
+
+  <ion-content>
+      <ion-grid style="background-color: #2cd094">
+        <ion-item padding-horizital no-lines style="background-color: #2cd094">
+        <ion-avatar item-start class="user-avatar">S</ion-avatar> 
+        <h4 no-padding style="color:white;font-weight: bold">{{loggedInUser.firstname+' '+loggedInUser.lastname}}</h4>
+        <p no-padding style="color:white">{{loggedInUser.email}}</p>
+        </ion-item>
+      </ion-grid>
+    <ion-list>
+      <button class="no-border" menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+         <ion-grid no-padding>
+            <ion-row>
+              <ion-col col-2><ion-icon name={{p.icon}}></ion-icon></ion-col>
+              <ion-col col-8>{{p.title}}</ion-col>
+            </ion-row>
+         </ion-grid>
+      </button>
+    </ion-list>
+    
+      <button class="no-border" menuClose ion-item (click)="logOut()">
+        <ion-grid no-padding>
+            <ion-row>
+              <ion-col col-2><ion-icon ios="ios-log-out" md="md-log-out"></ion-icon></ion-col>
+              <ion-col col-8>Logout</ion-col>
+            </ion-row>
+        </ion-grid>
+      </button>
+   
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
